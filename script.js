@@ -13,7 +13,7 @@ async function loadProducts() {
 
     function displayProducts(filtered) {
       list.innerHTML = "";
-      for (let i = 0 ; i < filtered.length; i++) {
+      for (let i =  filtered.length - 10 ; i < filtered.length; i++) {
         const product = filtered[i];
 
         const card = document.createElement("div");
@@ -89,6 +89,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
