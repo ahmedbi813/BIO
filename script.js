@@ -36,7 +36,18 @@ async function loadProducts() {
   });
 }
 
+    function clearAllCookies() {
+  document.cookie.split(";").forEach(cookie => {
+    const name = cookie.split("=")[0].trim();
+    document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/`;
+  });
+}
 
+
+
+
+    // مسج الكوكيز
+    clearAllCookies();
     // 👉 عند التحميل: عرض آخر 10 منتجات
     displayProducts(products.slice(-10).reverse());
 
@@ -109,10 +120,14 @@ async function loadProductDetail() {
   }
 }
 
+
+
+
 // ===============================
 // استدعاء الدوال
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
 
