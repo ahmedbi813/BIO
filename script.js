@@ -17,7 +17,7 @@ async function loadProducts() {
   list.innerHTML = "";
 
   // أخذ آخر 10 عناصر فقط
-  const lastTenItems = items.slice(-10);
+  const lastTenItems = items.slice(-10).reverse();
 
   lastTenItems.forEach((product) => {
     const card = document.createElement("div");
@@ -128,6 +128,7 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
 
 
