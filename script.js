@@ -21,7 +21,7 @@ async function loadProducts() {
           <p>${product.price ? product.price + " USDT" : ""}</p>
         `;
         card.onclick = () => {
-          window.location.href = `product.html?id=${product.id}`;
+          window.location.href = `${product.link}`;
         };
         list.appendChild(card);
       });
@@ -32,9 +32,7 @@ async function loadProducts() {
     if (searchInput) {
       searchInput.addEventListener('input', e => {
         const term = e.target.value.toLowerCase();
-        displayProducts(products.filter(p =>
-          (p.name && p.name.toLowerCase().includes(term)) ||
-          (p.keyword && p.keyword.toLowerCase().includes(term))
+        displayProducts(products.filter(p =>  (p.keyword.toString() == term.toString())
         ));
       });
     }
@@ -79,4 +77,5 @@ async function loadProductDetail() {
 // استدعاء الدوال
 loadProducts();
 loadProductDetail();
+
 
