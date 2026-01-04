@@ -41,15 +41,14 @@ async function loadProducts() {
     // إذا كان الإدخال فارغ
     if (term === "") {
       displayProducts(filteredProducts);
-      return;
-    }
-
+    
+    }else{
+    
     const filtered = products.filter(
-      (p) => p.keyword.toString() === term
-    );
+      (p) => p.keyword.toString() === term.toString());
 
     displayProducts(filtered);
-  });
+  };
 }
 
 
@@ -96,6 +95,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
