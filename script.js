@@ -14,24 +14,28 @@ async function loadProducts() {
 
     // عرض المنتجات
     function displayProducts(items) {
-      list.innerHTML = "";
+  list.innerHTML = "";
 
-      items.forEach((product) => {
-        const card = document.createElement("div");
-        card.className = "product-card fade-in";
-        card.innerHTML = `
-          <img src="${product.image}" alt="${product.name}">
-          <h3>${product.name}</h3>
-          <p>${product.price ? product.price + " USDT" : ""}</p>
-        `;
+  // أخذ آخر 10 عناصر فقط
+  const lastTenItems = items.slice(-10);
 
-        card.onclick = () => {
-          window.location.href = product.link;
-        };
+  lastTenItems.forEach((product) => {
+    const card = document.createElement("div");
+    card.className = "product-card fade-in";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.price ? product.price + " USDT" : ""}</p>
+    `;
 
-        list.appendChild(card);
-      });
-    }
+    card.onclick = () => {
+      window.location.href = product.link;
+    };
+
+    list.appendChild(card);
+  });
+}
+
 
     // 👉 عند التحميل: عرض آخر 10 منتجات
     displayProducts(products.slice(-10));
@@ -110,3 +114,4 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
