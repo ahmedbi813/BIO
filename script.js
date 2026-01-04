@@ -56,7 +56,7 @@ async function loadProducts() {
 
         // بحث بالمطابقة الكاملة مع keyword
         const filtered = products.filter(
-          (p) => p.keyword.toString() === term
+          (p) => p.id.toString() === term.toString()
         );
 
         displayProducts(filtered);
@@ -67,3 +67,4 @@ async function loadProducts() {
     list.innerHTML = "<p>❌ Product loading failed</p>";
   }
 }
+
