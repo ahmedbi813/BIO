@@ -75,8 +75,8 @@ async function loadProducts() {
       });
     }
   } catch (err) {
-    console.error("حدث خطأ أثناء تحميل المنتجات:", err);
-    list.innerHTML = "<p>❌ فشل تحميل المنتجات</p>";
+    console.error("An error occurred while loading the products:", err);
+    list.innerHTML = "<p>Product loading failed ❌</p>";
   }
 }
 
@@ -92,7 +92,7 @@ async function loadProductDetail() {
     const id = params.get("id");
 
     const res = await fetch("https://ahmedbi813.github.io/BIO/data.json");
-    if (!res.ok) throw new Error(`فشل التحميل: ${res.status}`);
+    if (!res.ok) throw new Error(`Loading failed: ${res.status}`);
 
     const products = await res.json();
     const product = products.find(
@@ -103,20 +103,20 @@ async function loadProductDetail() {
       container.innerHTML = `
         <h2>${product.name}</h2>
         <img src="${product.image}" alt="${product.name}" class="Image_Size">
-        <p id="Description">${product.description || "لا يوجد وصف"}</p>
+        <p id="Description">${product.description || "No description"}</p>
         ${
           product.link
-            ? `<a href="${product.link}" target="_blank" class="btn">تفاصيل المنتج</a>`
+            ? `<a href="${product.link}" target="_blank" class="btn">Product details</a>`
             : ""
         }
-        <a href="index.html" class="btn">🔙 رجوع</a>
+        <a href="index.html" class="btn">Back 🔙</a>
       `;
     } else {
-      container.innerHTML = `<p>⚠️ المنتج غير موجود</p>`;
+      container.innerHTML = `<p>Product not available ⚠️</p>`;
     }
   } catch (err) {
-    console.error("حدث خطأ أثناء تحميل تفاصيل المنتج:", err);
-    container.innerHTML = "<p>❌ فشل تحميل المنتج</p>";
+    console.error("An error occurred while loading product details:", err);
+    container.innerHTML = "<p>Product loading failed ❌ </p>";
   }
 }
 
@@ -128,7 +128,6 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
-
 
 
 
