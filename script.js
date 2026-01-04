@@ -5,7 +5,7 @@ async function loadProducts() {
   if (!list) return;
 
   try {
-    const res = await fetch("data.json"); // قراءة البيانات من ملف محلي
+    const res = await fetch("https://ahmedbi813.github.io/BIO/data.json"); // قراءة البيانات من ملف محلي
     if (!res.ok) throw new Error(`فشل التحميل: ${res.status}`);
 
     const products = await res.json();
@@ -79,3 +79,4 @@ async function loadProductDetail() {
 // استدعاء الدوال
 loadProducts();
 loadProductDetail();
+
