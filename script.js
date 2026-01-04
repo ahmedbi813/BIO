@@ -40,26 +40,14 @@ async function loadProducts() {
 
     // إذا كان الإدخال فارغ
     if (term === "") {
-      continue;
+      displayProducts(filteredProducts);
     
     }else{
     
     const filtered = products.filter(
-      (p) => p.keyword.toString() == term.toString());
-      list.innerHTML = "";
-      const product = filtered[i];
+      (p) => p.keyword.toString() === term.toString());
 
-        const card = document.createElement("div");
-        card.className = "product-card fade-in";
-        card.innerHTML = `
-    <img src="${product.image}" alt="${product.name}">
-    <h3>${product.name}</h3>
-    <p>${product.price ? product.price + " USD" : ""}</p>
-  `;
-
-      
-
-    
+    displayProducts(filtered);
   };
 }
 
@@ -107,8 +95,6 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
-
-
 
 
 
