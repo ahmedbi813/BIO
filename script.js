@@ -32,9 +32,10 @@ async function loadProducts() {
       }
     }
 
-   // displayProducts(products);
+   // 
 
     if (searchInput) {
+      displayProducts(products);
       searchInput.addEventListener("input", (e) => {
         const term = e.target.value;
         if (term != "") {
@@ -89,6 +90,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
