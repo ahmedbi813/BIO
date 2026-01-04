@@ -34,19 +34,21 @@ async function loadProducts() {
 
    displayProducts(products);
 
-    if (searchInput) {
+  if (searchInput) {
+  searchInput.addEventListener("input", (e) => {
+    const term = e.target.value.trim().toLowerCase();
+
+    if (term !== "") {
+      const filteredProducts = products.filter((p) =>
+        p.keyword.toString() === term.toString())
+      );
+      displayProducts(filteredProducts);
+    } else {
       displayProducts(products);
-      searchInput.addEventListener("input", (e) => {
-        const term = e.target.value;
-        if (term != "") {
-          displayProducts(
-            products.filter((p) => term.toString() == p.keyword.toString())
-          );
-        } else {
-          displayProducts(products.filter((p) => true));
-        }
-      });
     }
+  });
+}
+
   } catch (err) {
     console.error("An error occurred while loading the products:", err);
     list.innerHTML = "<p> Product loading failed ❌</p>";
@@ -90,6 +92,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
