@@ -5,7 +5,7 @@ async function loadProducts() {
 
   try {
     const res = await fetch(
-      "https://raw.githubusercontent.com/ahmedbi813/from_China_to_my_country/refs/heads/main/data.json"
+      "https://ahmedbi813.github.io/BIO/data.json"
     );
     if (!res.ok) throw new Error(`Loading failed: ${res.status}`);
 
@@ -89,3 +89,4 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
