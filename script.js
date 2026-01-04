@@ -34,20 +34,24 @@ async function loadProducts() {
 
    displayProducts(products);
 
-  if (searchInput) {
+ if (searchInput) {
   searchInput.addEventListener("input", (e) => {
-    const term = e.target.value.trim().toLowerCase();
+    const term = e.target.value.trim();
 
-    if (term !== "") {
-      const filteredProducts = products.filter((p) =>
-        p.keyword.toString() === term.toString())
-      );
+    // إذا كان الإدخال فارغ
+    if (term === "") {
       displayProducts(filteredProducts);
-    } else {
-      displayProducts(products);
+      return;
     }
+
+    const filtered = products.filter(
+      (p) => p.keyword.toString() === term
+    );
+
+    displayProducts(filtered);
   });
 }
+
 
   } catch (err) {
     console.error("An error occurred while loading the products:", err);
@@ -92,6 +96,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
