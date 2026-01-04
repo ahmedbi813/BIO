@@ -1,39 +1,62 @@
+// ===============================
 // تحميل المنتجات في index.html
+// ===============================
 async function loadProducts() {
-  const list = document.getElementById('product-list');
-  const searchInput = document.getElementById('search');
+  const list = document.getElementById("product-list");
+  const searchInput = document.getElementById("search");
   if (!list) return;
 
   try {
-    const res = await fetch("https://ahmedbi813.github.io/BIO/data.json"); // قراءة البيانات من ملف محلي
+    const res = await fetch("https://ahmedbi813.github.io/BIO/data.json");
     if (!res.ok) throw new Error(`فشل التحميل: ${res.status}`);
 
     const products = await res.json();
 
-    function displayProducts(filtered) {
-      list.innerHTML = '';
-      filtered.forEach(product => {
-        const card = document.createElement('div');
-        card.className = 'product-card fade-in';
+    // عرض المنتجات
+    function displayProducts(items) {
+      list.innerHTML = "";
+
+      items.forEach((product) => {
+        const card = document.createElement("div");
+        card.className = "product-card fade-in";
         card.innerHTML = `
           <img src="${product.image}" alt="${product.name}">
           <h3>${product.name}</h3>
           <p>${product.price ? product.price + " USDT" : ""}</p>
         `;
+
         card.onclick = () => {
-          window.location.href = `${product.link}`;
+          window.location.href = product.link;
         };
+
         list.appendChild(card);
       });
     }
 
-    displayProducts(products);
+    // 👉 عند التحميل: عرض آخر 10 منتجات
+    displayProducts(products.slice(-10));
 
+    // البحث
     if (searchInput) {
-      searchInput.addEventListener('input', e => {
-        const term = e.target.value.toLowerCase();
-        displayProducts(products.filter(p =>  (p.keyword.toString() == term.toString())
-        ));
+      searchInput.addEventListener("input", (e) => {
+        // السماح بالأرقام فقط
+        e.target.value = e.target.value.replace(/\D/g, "");
+
+        // تحويل الرقم إلى نص
+        const term = String(e.target.value).trim();
+
+        // إذا كان البحث فارغ → آخر 10 منتجات
+        if (term === "") {
+          displayProducts(products.slice(-10));
+          return;
+        }
+
+        // مطابقة كاملة مع keyword (نص مع نص)
+        const filtered = products.filter(
+          (p) => String(p.keyword) === term
+        );
+
+        displayProducts(filtered);
       });
     }
   } catch (err) {
@@ -42,27 +65,35 @@ async function loadProducts() {
   }
 }
 
-// تحميل تفاصيل المنتج في product.html
+// ===============================
+// تحميل تفاصيل المنتج
+// ===============================
 async function loadProductDetail() {
-  const container = document.getElementById('product-detail');
+  const container = document.getElementById("product-detail");
   if (!container) return;
 
   try {
     const params = new URLSearchParams(window.location.search);
-    const id = params.get('id');
+    const id = params.get("id");
 
-    const res = await fetch("data.json"); // قراءة نفس الملف
+    const res = await fetch("https://ahmedbi813.github.io/BIO/data.json");
     if (!res.ok) throw new Error(`فشل التحميل: ${res.status}`);
 
     const products = await res.json();
-    const product = products.find(p => p.id.toString() === id);
+    const product = products.find(
+      (p) => String(p.id) === String(id)
+    );
 
     if (product) {
       container.innerHTML = `
         <h2>${product.name}</h2>
         <img src="${product.image}" alt="${product.name}" class="Image_Size">
         <p id="Description">${product.description || "لا يوجد وصف"}</p>
-        ${product.link ? `<a href="${product.link}" target="_blank" class="btn">تفاصيل المنتج</a>` : ""}
+        ${
+          product.link
+            ? `<a href="${product.link}" target="_blank" class="btn">تفاصيل المنتج</a>`
+            : ""
+        }
         <a href="index.html" class="btn">🔙 رجوع</a>
       `;
     } else {
@@ -74,8 +105,8 @@ async function loadProductDetail() {
   }
 }
 
+// ===============================
 // استدعاء الدوال
+// ===============================
 loadProducts();
 loadProductDetail();
-
-
