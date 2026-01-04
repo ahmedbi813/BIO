@@ -49,7 +49,7 @@ async function loadProducts() {
     // مسج الكوكيز
     clearAllCookies();
     // 👉 عند التحميل: عرض آخر 10 منتجات
-    displayProducts(products.slice(-10).reverse());
+    displayProducts(products.slice(-10));
 
     // البحث
     if (searchInput) {
@@ -128,6 +128,7 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
 
 
