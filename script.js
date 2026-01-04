@@ -32,7 +32,7 @@ async function loadProducts() {
       }
     }
 
-    displayProducts(products);
+   // displayProducts(products);
 
     if (searchInput) {
       searchInput.addEventListener("input", (e) => {
@@ -89,6 +89,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
