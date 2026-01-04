@@ -38,7 +38,7 @@ async function loadProducts() {
 
 
     // 👉 عند التحميل: عرض آخر 10 منتجات
-    displayProducts(products.slice(-10));
+    displayProducts(products.slice(-10).reverse());
 
     // البحث
     if (searchInput) {
@@ -114,4 +114,5 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
