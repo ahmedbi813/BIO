@@ -32,7 +32,7 @@ async function loadProducts() {
       }
     }
 
-   // 
+   displayProducts(products);
 
     if (searchInput) {
       displayProducts(products);
@@ -90,6 +90,7 @@ async function loadProductDetail() {
 
 loadProducts();
 loadProductDetail();
+
 
 
 
