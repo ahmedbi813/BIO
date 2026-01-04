@@ -8,7 +8,7 @@ async function loadProducts() {
 
   try {
     const res = await fetch("https://ahmedbi813.github.io/BIO/data.json");
-    if (!res.ok) throw new Error(`فشل التحميل: ${res.status}`);
+    if (!res.ok) throw new Error(`Loading failed: ${res.status}`);
 
     const products = await res.json();
 
@@ -128,6 +128,7 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
 
 
