@@ -29,7 +29,8 @@ async function loadProducts() {
     `;
 
     card.onclick = () => {
-      window.location.href = product.link;
+      window.open( product.link,'_blank');
+      // window.location.href = product.link;
     };
 
     list.appendChild(card);
@@ -128,6 +129,7 @@ async function loadProductDetail() {
 // ===============================
 loadProducts();
 loadProductDetail();
+
 
 
 
