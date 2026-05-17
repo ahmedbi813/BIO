@@ -1,16 +1,1 @@
-{
-  "apps": {
-    "app.alkd.sdf": {
-      "products": [
-        {
-          "id": 1,
-          "name": "https://app.hey.com/",
-          "image": "https://app.hey.com/",
-          "description": "https://app.hey.com/",
-          "link": "https://app.hey.com/",
-          "keyword": "https://app.hey.com/"
-        }
-      ]
-    }
-  }
-}
+
