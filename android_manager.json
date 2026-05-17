@@ -1,16 +1,3 @@
 {
-  "apps": {
-    "app.com.apdf": {
-      "products": [
-        {
-          "id": 1,
-          "name": "https://github.com/ahmedbi813/BIO/blob/main/android_manager.json",
-          "image": "https://github.com/ahmedbi813/BIO/blob/main/android_manager.json",
-          "description": "https://github.com/ahmedbi813/BIO/blob/main/android_manager.json",
-          "link": "https://github.com/ahmedbi813/BIO/blob/main/android_manager.json",
-          "foucs_on": "1"
-        }
-      ]
-    }
-  }
+  "apps": {}
 }
