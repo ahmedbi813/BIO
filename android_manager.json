@@ -1,3 +1,16 @@
 {
-  "apps": {}
+  "apps": {
+    "com.codex218.cars": {
+      "products": [
+        {
+          "id": 1,
+          "name": "test",
+          "image": "https://www.googe.com",
+          "description": "https://www.googe.com",
+          "link": "https://www.googe.com",
+          "foucs_on": "fsd"
+        }
+      ]
+    }
+  }
 }
