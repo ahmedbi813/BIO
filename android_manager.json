@@ -1,7 +1,16 @@
 {
   "apps": {
     "com.codex218.cars": {
-      "products": []
+      "products": [
+        {
+          "id": 23,
+          "name": "https://www.googl.eocm",
+          "image": "https://www.googl.eocm",
+          "description": "https://www.googl.eocm",
+          "link": "https://www.googl.eocm",
+          "focus_on": false
+        }
+      ]
     }
   }
 }
